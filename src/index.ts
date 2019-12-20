@@ -31,7 +31,6 @@ class Connect {
     };
 
     renderIframe  () {
-        console.log(this);
         Render(`${this.getOrigin()}/hunter?hsession=${this.session}`, this.domain);
     };
 

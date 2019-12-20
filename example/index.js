@@ -16,7 +16,7 @@
         });
 
         connect.onSuccess(() => {
-            const ct = document.querySelector('#connect');
+            const ct = document.querySelector('#connect-embedded');
             ct.style.display = 'none';
             success.innerHTML = 'Conta conectada com sucesso'
         });
