@@ -45,7 +45,7 @@ How you can create a new instance of Connect.
 
 ```javascript
 const connect =  new Connect({    
-    // Connect Session link
+    // Connect Session ID
     session: 'c889f8e9-8c58-456d-8f35-3840a292a574',
     
     // Connect Session environment
