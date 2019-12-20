@@ -15,7 +15,12 @@
             console.log('Connect Loaded')
         });
 
+        connect.onAuthSuccess(() => {
+            console.log('Auth success')
+        });
+
         connect.onSuccess(() => {
+            console.log('Success');
             const ct = document.querySelector('#connect-embedded');
             ct.style.display = 'none';
             success.innerHTML = 'Conta conectada com sucesso'
