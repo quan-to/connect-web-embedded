@@ -8,6 +8,7 @@
     <meta name="author" content="">
     <title>Demo - Connect Web Embedded</title>
     <!-- Compiled and minified CSS -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
 </head>
 
@@ -35,7 +36,16 @@
             <button id="btn-connect" class="btn-large waves-effect waves-light blue">Conectar com a Quanto</button>
         </div>
 
-        <div id="success" />
+        <ul class="collection with-header">
+            <li class="collection-header"><h4>Steps</h4></li>
+            <li class="collection-item">onLoaded  <i id="onLoaded" class="material-icons" style="display: none">check</i></li>
+            <li class="collection-item">onAuthSuccess  <i id="onAuthSuccess" class="material-icons" style="display: none">check</i></li>
+            <li class="collection-item">onAuthFail  <i id="onAuthFail" class="material-icons" style="display: none">check</i></li>
+            <li class="collection-item">onGrantedPermission  <i id="onGrantedPermission" class="material-icons" style="display: none">check</i></li>
+            <li class="collection-item">onSelectBank  <i id="onSelectBank" class="material-icons" style="display: none">check</i></li>
+            <li class="collection-item">onAddAccountSuccess  <i id="onAddAccountSuccess" class="material-icons" style="display: none">check</i></li>
+            <li class="collection-item">onSuccess  <i id="onSuccess" class="material-icons" style="display: none">check</i></li>
+        </ul>
 
         <br><br>
 
@@ -43,7 +53,7 @@
 </div>
 <!-- Compiled and minified JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@quan-to/connect-web-embedded@1.0.0/dist/index.min.js"></script>
-    <script src="index.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@quan-to/connect-web-embedded@1.0.1/dist/index.min.js"></script>
+    <script src="index.js?v=a"></script>
 </body>
 </html>

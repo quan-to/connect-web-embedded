@@ -5,25 +5,39 @@
 
     btn.addEventListener('click', e => {
         const session = input.value;
-
         e.preventDefault();
         const connect = new Connect({
             session: session,
         });
 
         connect.onLoad(() => {
-            console.log('Connect Loaded')
+            document.querySelector('#onLoaded').style.display = 'inline-block';
         });
 
         connect.onAuthSuccess(() => {
-            console.log('Auth success')
+            document.querySelector('#onAuthSuccess').style.display = 'inline-block';
+        });
+
+        connect.onAuthFail(() => {
+            document.querySelector('#onAuthFail').style.display = 'inline-block';
+        });
+
+        connect.onGrantedPermission(() => {
+            document.querySelector('#onGrantedPermission').style.display = 'inline-block';
+        });
+
+        connect.onSelectBank(() => {
+            document.querySelector('#onSelectBank').style.display = 'inline-block';
+        });
+
+        connect.onAddAccountSuccess(() => {
+            document.querySelector('#onAddAccountSuccess').style.display = 'inline-block';
         });
 
         connect.onSuccess(() => {
-            console.log('Success');
+            document.querySelector('#onSuccess').style.display = 'inline-block';
             const ct = document.querySelector('#connect-embedded');
             ct.style.display = 'none';
-            success.innerHTML = 'Conta conectada com sucesso'
         });
     });
 })();
