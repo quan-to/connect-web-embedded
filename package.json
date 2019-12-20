@@ -1,5 +1,5 @@
 {
-  "name": "@quan-to/connect-web-client",
+  "name": "@quan-to/connect-web-embedded",
   "version": "1.0.0",
   "description": "Javascript Web Embedded to start Connect on Partner's application",
   "main": "dist/index.js",
