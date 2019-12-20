@@ -12,27 +12,29 @@ class Connect {
     session: string;
     ee: any;
     env: string;
+    getOrigin: any;
 
     constructor (props) {
-        this.domain = props.domain;
+        this.domain = window.location.origin;
         this.session = props.session;
         this.ee = new EventEmitter();
-        this.env = props.env || 'local';
+        this.env = props.env;
+        this.getOrigin = (env: string|void) => {
+            switch (env || this.env) {
+                case 'sandbox': return 'https://sandbox.quanto.app';
+                case 'production': return 'https://quanto.app';
+                default : return this.env || this.getOrigin('production') ;
+            }
+        }
         this.handlerMessageListener();
         this.renderIframe();
-
     };
 
-    getOrigin (env: string|void) {
-        switch (env || this.env) {
-            case 'sandbox': return 'https://sandbox.quanto.app';
-            case 'production': return 'https://quanto.app';
-            default : this.env || this.getOrigin('production') ;
-        }
-    }
+
 
     renderIframe  () {
-        Render("${getOrigin}/hunter?hsession=${this.session}", this.domain)
+        console.log(this);
+        Render(`${this.getOrigin()}/hunter?hsession=${this.session}`, this.domain);
     };
 
     handlerMessageListener () {
