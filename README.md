@@ -34,7 +34,7 @@ $ yarn add connect-web-embedded
 Using cdn:
 
 ```
-<script src="..."></script>
+<script src="https://stupefied-archimedes-52d3b4.netlify.com/index.js"></script>
 ```
 
 # Creating an instance
@@ -44,10 +44,7 @@ How you can create a new instance of Connect.
 **new Connect([config])**
 
 ```javascript
-const connect =  new Connect({
-    // Domain how will receive the messages, normally your domain
-    domain: 'https://some-domain.com',
-    
+const connect =  new Connect({    
     // Connect Session link
     session: 'c889f8e9-8c58-456d-8f35-3840a292a574',
     
@@ -60,7 +57,6 @@ const connect =  new Connect({
 
 ```javascript
 const connect = new Connect({
-    domain: 'https://mystifying-nobel-49ca54.netlify.com',
     session: 'c889f8e9-8c58-456d-8f35-3840a292a574',
     env: 'sandbox'
 });
