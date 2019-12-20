@@ -2,6 +2,8 @@
 
 This web client will help you as a partner to initialize Quanto Connect embedded in your application.
 
+[![](https://data.jsdelivr.com/v1/package/npm/@quan-to/connect-web-embedded/badge)](https://www.jsdelivr.com/package/npm/@quan-to/connect-web-embedded)
+
 * [Demo](#demo)
 * [Installing](#installing)
 * [Creating an instance](#creating-an-instance)
@@ -34,7 +36,7 @@ $ yarn add connect-web-embedded
 Using cdn:
 
 ```
-<script src="https://stupefied-archimedes-52d3b4.netlify.com/index.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@quan-to/connect-web-embedded@1.0.0/dist/index.min.js"></script>
 ```
 
 # Creating an instance
@@ -101,8 +103,9 @@ $ yarn build
 
 ## Stack
 
-* [Typescript](https://www.typescriptlang.org/)
-* [Parcel](https://parceljs.org/)
+* [Event Emitter3 - ^4.0.0](https://github.com/primus/eventemitter3)
+* [TypeScript - ^3.7.3](https://www.typescriptlang.org/)
+* [Parcel - ^1.12.4](https://parceljs.org/)
 
 ## Contributing
 
