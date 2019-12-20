@@ -58,36 +58,40 @@ class Connect {
     };
 
     onExit (callback) {
-        const { event } = this;
-        if(event === 'onexit') callback(this.payload);
+        this.ee.on('onexit', () => {
+            callback();
+        });
     };
 
-
     onGrantedPermission (callback) {
-        const { event } = this;
-        if(event === 'ongrantedpermission') callback(this.payload);
+        this.ee.on('ongrantedpermission', () => {
+            callback(this.payload);
+        });
     };
 
     onAuthSuccess (callback) {
-        const { event } = this;
-        if(event === 'onauthsuccess') callback(this.payload);
+        this.ee.on('onauthsuccess', () => {
+            callback(this.payload);
+        });
     };
 
     onAuthFail (callback) {
-        const { event } = this;
-        if(event === 'onauthfail') callback(this.payload);
+        this.ee.on('onauthfail', () => {
+            callback(this.payload);
+        });
     };
 
     onSelectBank (callback) {
-        const { event } = this;
-        if(event === 'onselectbank') callback(this.payload);
+        this.ee.on('onselectbank', () => {
+            callback(this.payload);
+        });
     };
 
     onAddAccountSuccess (callback) {
-        const { event } = this;
-        if(event === 'onaddaccountsuccess') callback(this.payload);
+        this.ee.on('onaddaccountsuccess', () => {
+            callback(this.payload);
+        });
     };
-
 }
 
 window.Connect = window.Connect || Connect;
