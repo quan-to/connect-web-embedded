@@ -34,6 +34,11 @@
             document.querySelector('#onAddAccountSuccess').style.display = 'inline-block';
         });
 
+        connect.onExit(() => {
+            const ct = document.querySelector('#connect-embedded');
+            ct.style.display = 'none';
+        });
+
         connect.onSuccess(() => {
             document.querySelector('#onSuccess').style.display = 'inline-block';
             const ct = document.querySelector('#connect-embedded');

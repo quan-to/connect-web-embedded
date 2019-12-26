@@ -36,7 +36,7 @@ $ yarn add connect-web-embedded
 Using cdn:
 
 ```
-<script src="https://cdn.jsdelivr.net/npm/@quan-to/connect-web-embedded@1.0.1/dist/index.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@quan-to/connect-web-embedded@1.0.2/dist/index.min.js"></script>
 ```
 
 # Creating an instance
