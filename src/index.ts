@@ -22,7 +22,7 @@ class Connect {
         this.getOrigin = (env: string|void) => {
             switch (env || this.env) {
                 case 'sandbox': return 'https://sandbox.quanto.app';
-                case 'production': return 'https://quanto.app';
+                case 'production': return 'https://connect.quanto.app';
                 default : return this.env || this.getOrigin('production') ;
             }
         }
@@ -31,7 +31,7 @@ class Connect {
     };
 
     renderIframe  () {
-        Render(`${this.getOrigin()}/hunter?hsession=${this.session}`, this.domain);
+        Render(`${this.getOrigin()}/?hsession=${this.session}`, this.domain);
     };
 
     handlerMessageListener () {
