@@ -17,7 +17,7 @@ This web client will help you as a partner to initialize Quanto Connect embedded
 
 # Demo
 
-https://mystifying-nobel-49ca54.netlify.com/
+https://connect-gmyus3q72.now.sh
 
 # Installing
 
@@ -78,12 +78,12 @@ method | params | return | description
 -------|--------|--------|------------
 onLoad | function | void | This callback will be call when Connect is ready
 onExit | function | void | This callback will be call when the user leaves the application
-onSuccess | function | void | This callback will be call when user finished the flow with success
 onAuthSuccess | function | data | This callback will be call after user login 
 onAuthFail | function | void | This callback will be call after user login fail
-onGrantedPermission | function | data | This callback will be call when user granted the permission and return the permission
 onSelectBank | function | data | This callback will be call after user select a bank
 onAddAccountSuccess | function | data | This callback will be call after user add a new account
+onGrantedPermission | function | data | This callback will be call when user granted the permission and return the permission
+onSuccess | function | void | This callback will be call when user finished the flow with success
 
 # Run and Build
 
