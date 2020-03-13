@@ -8,7 +8,7 @@
         e.preventDefault();
         const connect = new Connect({
             session: session,
-            env: 'https://connect.dev.quanto.app'
+            env: 'http://connect.staging.quanto.app'
         });
 
         connect.onLoad(() => {
