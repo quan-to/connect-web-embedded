@@ -39,16 +39,6 @@ class Connect {
   Render(`${this.getOrigin()}/?hsession=${this.session}`, this.domain);
  }
 
- handleMessage(event) {
-  console.log("Evento, ", event);
-  const { origin, data } = event;
-  const { hook, payload } = data;
-  console.log(origin, this.env);
-  if (origin !== this.getOrigin()) return;
-  this.payload = payload;
-  this.ee.emit(hook);
- }
-
  handlerMessageListener() {
   window.addEventListener("message", (event) => {
    const { origin, data } = event;
