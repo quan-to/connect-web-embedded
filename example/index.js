@@ -34,12 +34,11 @@
   });
 
   connect.onAddAccountSuccess(() => {
-   document.querySelector("#onAddAccountSuccess").style.display =
-    "inline-block";
+   document.querySelector("#onAddAccountSuccess").style.display = "inline-block";
   });
 
   connect.onExit(() => {
-   console.log("onExit");
+    document.querySelector("#onExit").style.display = "inline-block";
   });
 
   connect.onSuccess(() => {
