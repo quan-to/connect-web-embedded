@@ -58,7 +58,7 @@ class Connect {
  onSuccess(callback) {
   this.ee.on("onsuccess", () => {
    callback();
-   const ct = document.querySelector("#connect-embedded");
+   const ct = document.querySelector("#connect-embedded-18100062243781");
    if (ct !== null) ct.remove();
   });
  }
@@ -66,7 +66,7 @@ class Connect {
  onExit(callback) {
   this.ee.on("onexit", () => {
    callback();
-   const ct = document.querySelector("#connect-embedded");
+   const ct = document.querySelector("#connect-embedded-18100062243781");
    if (ct !== null) ct.remove();
   });
  }
