@@ -1,7 +1,7 @@
 const Render = (session: string, domain: string) => {
     const iframe = document.createElement('iframe');
     iframe.setAttribute('src', `${session}&domain=${domain}&embedded=true`);
-    iframe.setAttribute('id', 'connect-embedded');
+    iframe.setAttribute('id', 'connect-embedded-18100062243781');
     iframe.setAttribute('style', `
         position: fixed;
         top: 0px;
