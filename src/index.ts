@@ -7,7 +7,7 @@ declare global {
  }
 }
 
-class Connect {
+export class Connect {
  hook: string;
  payload: any;
  domain: string;
