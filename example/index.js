@@ -42,7 +42,6 @@
   });
 
   connect.onSuccess(() => {
-   console.log("onSuccess");
    document.querySelector("#onSuccess").style.display = "inline-block";
   });
  });

@@ -1,5 +1,5 @@
-import { EventEmitter } from "eventemitter3";
 import Render from "./render";
+import { createPostMessageListener } from './observable'
 
 declare global {
  interface Window {
@@ -7,7 +7,7 @@ declare global {
  }
 }
 
-class Connect {
+export class Connect {
  hook: string;
  payload: any;
  domain: string;
@@ -15,11 +15,21 @@ class Connect {
  ee: any;
  env: string;
  getOrigin: any;
+ createPostMessage: any;
+ _callback: {
+    onLoad: any,
+    onSuccess: any,
+    onExit: any,
+    onGrantedPermission: any,
+    onAddAccountSuccess: any,
+    onAuthSuccess: any,
+    onAuthFail: any,
+    onSelectBank: any
+ };
 
  constructor(props) {
   this.domain = window.location.origin;
   this.session = props.session;
-  this.ee = new EventEmitter();
   this.env = props.env;
   this.getOrigin = (env: string | void) => {
    switch (env || this.env) {
@@ -31,75 +41,86 @@ class Connect {
      return this.env || this.getOrigin("production");
    }
   };
-  this.handlerMessageListener();
+   this._callback = {
+     onAddAccountSuccess: () => { },
+     onAuthSuccess: () => { },
+     onAuthFail: () => { },
+     onExit: () => { },
+     onGrantedPermission: () => { },
+     onLoad: () => { },
+     onSelectBank: () => { },
+     onSuccess: () => { }
+   }
   this.renderIframe();
+   this.createPostMessage = createPostMessageListener({
+     getOrigin: this.getOrigin,
+     payloads: this.payload,
+     hooks: this.hook
+  });
+  this.createPostMessage.subscribe(this.handleHookAction.bind(this))
  }
 
  renderIframe() {
   Render(`${this.getOrigin()}/?hsession=${this.session}`, this.domain);
  }
 
- handlerMessageListener() {
-  window.addEventListener("message", (event) => {
-   const { origin, data } = event;
-   const { hook, payload } = data;
-   if (origin !== this.getOrigin()) return;
-   this.payload = payload;
-   this.ee.emit(hook);
-  });
+  
+  onLoad(callback) {
+    this._callback.onLoad = callback
+  }
+
+  onSuccess(callback) {
+    this._callback.onSuccess = callback
  }
 
- onLoad(callback) {
-  this.ee.on("onload", () => {
-   callback();
-  });
+  onExit(callback) {
+    this._callback.onExit = callback
  }
 
- onSuccess(callback) {
-  this.ee.on("onsuccess", () => {
-   callback();
-   const ct = document.querySelector("#connect-embedded-18100062243781");
-   if (ct !== null) ct.remove();
-  });
+  onGrantedPermission(callback) {
+    this._callback.onGrantedPermission = callback
  }
 
- onExit(callback) {
-  this.ee.on("onexit", () => {
-   callback();
-   const ct = document.querySelector("#connect-embedded-18100062243781");
-   if (ct !== null) ct.remove();
-  });
+  onAuthSuccess(callback) {
+    this._callback.onAuthSuccess = callback
  }
 
- onGrantedPermission(callback) {
-  this.ee.on("ongrantedpermission", () => {
-   callback(this.payload);
-  });
+  onAuthFail(callback) {
+    this._callback.onAuthFail = callback
  }
 
- onAuthSuccess(callback) {
-  this.ee.on("onauthsuccess", () => {
-   callback(this.payload);
-  });
+  onSelectBank(callback) {
+    this._callback.onSelectBank = callback
  }
 
- onAuthFail(callback) {
-  this.ee.on("onauthfail", () => {
-   callback(this.payload);
-  });
+  onAddAccountSuccess(callback) {
+    this._callback.onAddAccountSuccess = callback
  }
+ 
+  
+  handleHookAction = (hook) => {
+    if (!this._callback) return console.log('Callback undefined')
+    const { onLoad, onExit,onSuccess, onGrantedPermission, onAuthSuccess, onAuthFail, onSelectBank, onAddAccountSuccess } = this._callback
+    
+    if (hook === "onload") return onLoad()
 
- onSelectBank(callback) {
-  this.ee.on("onselectbank", () => {
-   callback(this.payload);
-  });
- }
-
- onAddAccountSuccess(callback) {
-  this.ee.on("onaddaccountsuccess", () => {
-   callback(this.payload);
-  });
- }
+    if (hook === "onsuccess") {
+      const valueHTML = document.getElementsByTagName("iframe")
+      Array.from(valueHTML).forEach(va => va.id.includes("connect-embedded") ? va.remove() : null);
+      return onSuccess()
+    }
+    if(hook === "ongrantedpermission") return onGrantedPermission(this.payload)
+    if(hook === "onauthsuccess") return onAuthSuccess(this.payload)
+    if(hook === "onauthfail") return onAuthFail(this.payload)
+    if(hook === "onselectbank") return onSelectBank(this.payload)
+    if (hook === "onaddaccountsuccess") return onAddAccountSuccess(this.payload)
+    
+   if (hook === "onexit") {
+     const valueHTML = document.getElementsByTagName("iframe");
+     Array.from(valueHTML).forEach(va => va.id.includes("connect-embedded") ? va.remove() : null);
+    return onExit()
+  }
+}
 }
 
 window.Connect = window.Connect || Connect;

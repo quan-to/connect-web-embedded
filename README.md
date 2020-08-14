@@ -24,13 +24,13 @@ https://connect-gmyus3q72.now.sh
 Using npm:
 
 ```
-$ npm install connect-web-embedded
+$ npm i @quan-to/connect-web-embedded
 ```
 
 Using yarn:
 
 ```
-$ yarn add connect-web-embedded
+$ yarn add @quan-to/connect-web-embedded
 ```
 
 Using cdn:
@@ -103,7 +103,6 @@ $ yarn build
 
 ## Stack
 
-* [Event Emitter3 - ^4.0.0](https://github.com/primus/eventemitter3)
 * [TypeScript - ^3.7.3](https://www.typescriptlang.org/)
 * [Parcel - ^1.12.4](https://parceljs.org/)
 

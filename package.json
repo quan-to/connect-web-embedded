@@ -18,7 +18,6 @@
   "typescript": "^3.7.3"
  },
  "dependencies": {
-  "eventemitter3": "^4.0.0",
   "parcel-bundler": "^1.12.4"
  },
  "bugs": {
