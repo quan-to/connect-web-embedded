@@ -1,3 +1,4 @@
+import './globalthis-polyfill'
 import Render from "./render";
 import { createPostMessageListener } from './observable'
 
@@ -28,7 +29,7 @@ export class Connect {
  };
 
  constructor(props) {
-  this.domain = window.location.origin;
+  this.domain = globalThis.location.origin;
   this.session = props.session;
   this.env = props.env;
   this.getOrigin = (env: string | void) => {
@@ -123,4 +124,4 @@ export class Connect {
 }
 }
 
-window.Connect = window.Connect || Connect;
+globalThis.Connect = globalThis.Connect || Connect;
