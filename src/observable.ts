@@ -28,9 +28,8 @@ export function createPostMessageListener({
     notifyAll(hook);
   }
 
-    window.addEventListener("message", eventData);
-     
-   
+  globalThis.addEventListener("message", eventData);
+
   return {
     subscribe,
   }
