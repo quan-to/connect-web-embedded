@@ -1,4 +1,6 @@
 # Connect Web Embedded
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fquan-to%2Fconnect-web-embedded.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2Fquan-to%2Fconnect-web-embedded?ref=badge_shield)
+
 
 This web client will help you as a partner to initialize Quanto Connect embedded in your application.
 
@@ -114,3 +116,7 @@ $ yarn build
 
 [suporte@quan.to](mailto:suporte@quan.to)
 
+
+
+## License
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fquan-to%2Fconnect-web-embedded.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2Fquan-to%2Fconnect-web-embedded?ref=badge_large)
