@@ -9,7 +9,7 @@
   e.stopPropagation();
   const connect = new Connect({
    session: session,
-   env: "http://localhost:3000",
+   env: "sandbox",
   });
 
   connect.onLoad(() => {

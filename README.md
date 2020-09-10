@@ -17,7 +17,7 @@ This web client will help you as a partner to initialize Quanto Connect embedded
 
 # Demo
 
-https://connect-gmyus3q72.now.sh
+https://connect-4k39dld76.vercel.app
 
 # Installing
 

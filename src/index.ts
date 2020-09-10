@@ -35,7 +35,7 @@ export class Connect {
   this.getOrigin = (env: string | void) => {
    switch (env || this.env) {
     case "sandbox":
-     return "https://sandbox.quanto.app";
+     return "https://connect.sandbox.quanto.app";
     case "production":
      return "https://connect.quanto.app";
     default:
