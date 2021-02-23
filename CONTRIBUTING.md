@@ -4,19 +4,24 @@
 
 - `develop`
 
-    origin: `staging`
+  origin: `staging`
 
-    what: This branch is "breakable", you can break this branch any time, is dedicated to test things. You don't need to update this branch by PR, just do a push force;
+  what: This branch is "breakable", you can break this branch any time, is
+  dedicated to test things. You don't need to update this branch by PR, just do
+  a push force;
 
 - `staging`:
 
-    origin: `master`
+  origin: `master`
 
-    what: This branch receives patches from anothers branches derived from `staging` and is supposed to be stable code, with proper version number, to final tests on an mirror to production environment;
+  what: This branch receives patches from anothers branches derived from
+  `staging` and is supposed to be stable code, with proper version number, to
+  final tests on an mirror to production environment;
 
 - `master`:
 
-    what: This branch runs stable code and is directly related to production. Every push in this branch sends this code version to production;
+  what: This branch runs stable code and is directly related to production.
+  Every push in this branch sends this code version to production;
 
 ### Branches names
 
@@ -31,7 +36,8 @@ Branches we write in English.
 - `fix`: fixes a bug;
 - `feat`: adds a new feature;
 - `refactor`: refactors/improves an existing feature;
-- `chore`: config changes, tools/libraries updates, builds adjustments and so forth;
+- `chore`: config changes, tools/libraries updates, builds adjustments and so
+  forth;
 - `docs`: documentation updates, no production code updated.
 
 #### $branch-description
@@ -47,10 +53,14 @@ A short trace separated message describing what is being developed.
 
 #### Bad examples of branches names
 
-- `feat/user-preferences-fields-with-validations`: too long, specifications should be in commits
-- `refactor/product`: too short and doesn't say anything about what is being refactored
-- `fix/add-new-user`: it's ambiguous, we should take care to do not looks like the type is not related to its action
-- `feat-user-preferences`: out of convention, the `feat` type and `user-preferences` description should be separated with slash `/`.
+- `feat/user-preferences-fields-with-validations`: too long, specifications
+  should be in commits
+- `refactor/product`: too short and doesn't say anything about what is being
+  refactored
+- `fix/add-new-user`: it's ambiguous, we should take care to do not looks like
+  the type is not related to its action
+- `feat-user-preferences`: out of convention, the `feat` type and
+  `user-preferences` description should be separated with slash `/`.
 
 ### Commit messages
 
@@ -67,13 +77,17 @@ Commits we write in English.
 Action type made in the commit in context:
 
 - `fix`: bugs fixes;
-- `hotfix`: critical bug fixes passive to be sent to main branches (see Main Branches section) without a Pull Request;
+- `hotfix`: critical bug fixes passive to be sent to main branches (see Main
+  Branches section) without a Pull Request;
 - `refactor`: refactoring or improving existing features;
-- `chore`: Config changes, tools/libraries updates, builds adjustments and so forth;
+- `chore`: Config changes, tools/libraries updates, builds adjustments and so
+  forth;
 - `test`: Add missing tests or refactoring tests; no production code change;
 - `docs`: changes or increments to the documentation;
 - `style`: formatting, missing semi colons, etc; no production code changed;
-- `feat`: when it adds a new feature or belongs specifically to a feature development and it's not related to any fix, hotfix, refactor or chore in the application.
+- `feat`: when it adds a new feature or belongs specifically to a feature
+  development and it's not related to any fix, hotfix, refactor or chore in the
+  application.
 
 #### $scope
 
@@ -87,7 +101,9 @@ The scope you're working on. Good examples of scope are:
 
 #### $commitTitle
 
-The first line cannot be longer than 70 characters, the second line is always blank and other lines should be wrapped at 80 characters. The type and scope should always be lowercase as shown below.
+The first line cannot be longer than 70 characters, the second line is always
+blank and other lines should be wrapped at 80 characters. The type and scope
+should always be lowercase as shown below.
 
 #### $commitBody
 
@@ -119,7 +135,8 @@ The possible actions are:
 
 ##### $message
 
-A simple message of this Pull Request as its title. It must be concise and short.
+A simple message of this Pull Request as its title. It must be concise and
+short.
 
 ##### Example
 
@@ -127,7 +144,9 @@ A simple message of this Pull Request as its title. It must be concise and short
 
 #### Pull Request body
 
-It's the release note of this Pull Request. It must be detailed but not lengthened. If you can make it short then do it. Just think it's a message that everyone must understand, from programmers to non-programmers.
+It's the release note of this Pull Request. It must be detailed but not
+lengthened. If you can make it short then do it. Just think it's a message that
+everyone must understand, from programmers to non-programmers.
 
 ### Git flow in a row
 
@@ -137,18 +156,30 @@ Create your branch → Commit → open a Pull Request to `staging` branch → de
 
 Use `rebase`. Don't use `merge`.
 
-> The git rebase command has a reputation for being magical Git voodoo that beginners should stay away from, but it can actually make life much easier for a development team when used with care.
+> The git rebase command has a reputation for being magical Git voodoo that
+> beginners should stay away from, but it can actually make life much easier for
+> a development team when used with care.
+
 - Atlassian
 
-We use `rebase` flow, never use `merge` to do not create *merge commits* and create bubles in the main *tree*.
+We use `rebase` flow, never use `merge` to do not create _merge commits_ and
+create bubles in the main _tree_.
 
 #### Why not merge?
 
-Merge is great mainly because of traceability but also for making conciliation between your code and upstream code, but its basis for avoiding some conflicts in pieces of complex files diffs are based in that change timestamp. The fourth dimension is great, Einstein proved it farewell, but something being coded earlier doesn't mean it's right.
+Merge is great mainly because of traceability but also for making conciliation
+between your code and upstream code, but its basis for avoiding some conflicts
+in pieces of complex files diffs are based in that change timestamp. The fourth
+dimension is great, Einstein proved it farewell, but something being coded
+earlier doesn't mean it's right.
 
 #### Rebase for the win
 
-Rebase does a recursive verification for every commit you've made with a upstream not tracked in your tree commit and stops you for every conflict it finds. It gives you a little headache rebasing after a while but in this scenario you should do constant rebases and making sure you have up to date code with your changes.
+Rebase does a recursive verification for every commit you've made with a
+upstream not tracked in your tree commit and stops you for every conflict it
+finds. It gives you a little headache rebasing after a while but in this
+scenario you should do constant rebases and making sure you have up to date code
+with your changes.
 
 ## References (or copy/paste)
 

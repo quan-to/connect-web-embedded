@@ -1,7 +1,7 @@
 (function () {
-  if (typeof globalThis === "object") return;
+  if (typeof globalThis === 'object') return;
   // @ts-ignore
-  Object.prototype.__defineGetter__("__alloc__", function () {
+  Object.prototype.__defineGetter__('__alloc__', function () {
     return this;
   });
   // @ts-ignore
