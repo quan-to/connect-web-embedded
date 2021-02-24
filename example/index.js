@@ -2,12 +2,18 @@
   const input = document.querySelector('#connect-session');
   const btn = document.querySelector('#btn-connect');
   const success = document.querySelector('#success');
+  let connect = null;
 
   btn.addEventListener('click', e => {
     const session = input.value;
     e.preventDefault();
     e.stopPropagation();
-    const connect = new Connect({
+
+    if (connect) {
+      connect.cleanUp();
+    }
+
+    connect = new Connect({
       session: session,
       env: 'sandbox',
     });

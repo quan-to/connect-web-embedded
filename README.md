@@ -82,16 +82,31 @@ connect.onSuccess(() => {
 
 # Callbacks
 
-| method              | params   | return | description                                                                           |
-| ------------------- | -------- | ------ | ------------------------------------------------------------------------------------- |
-| onLoad              | function | void   | This callback will be call when Connect is ready                                      |
-| onExit              | function | void   | This callback will be call when the user leaves the application                       |
-| onAuthSuccess       | function | data   | This callback will be call after user login                                           |
-| onAuthFail          | function | void   | This callback will be call after user login fail                                      |
-| onSelectBank        | function | data   | This callback will be call after user select a bank                                   |
-| onAddAccountSuccess | function | data   | This callback will be call after user add a new account                               |
-| onGrantedPermission | function | data   | This callback will be call when user granted the permission and return the permission |
-| onSuccess           | function | void   | This callback will be call when user finished the flow with success                   |
+| method              | params   | description                                                                           |
+| ------------------- | -------- | ------------------------------------------------------------------------------------- |
+| onLoad              | function | This callback will be call when Connect is ready                                      |
+| onExit              | function | This callback will be call when the user leaves the application                       |
+| onAuthSuccess       | function | This callback will be call after user login                                           |
+| onAuthFail          | function | This callback will be call after user login fail                                      |
+| onSelectBank        | function | This callback will be call after user select a bank                                   |
+| onAddAccountSuccess | function | This callback will be call after user add a new account                               |
+| onGrantedPermission | function | This callback will be call when user granted the permission and return the permission |
+| onSuccess           | function | This callback will be call when user finished the flow with success                   |
+
+> NOTE: None o these callbacks receive arguments
+
+# Clean Up
+
+After initializing the Connect module, the instance dispatches an event listener
+for the tunnel between the host (your app) and the guest (connect app). When
+instantiating a new instance of Connect, a new event listener is created, and
+you will receive duplicity of events, causing unexpected behavior or even
+performance issues or memory leak. It's crucial to clean up the Connect instance
+before you destroy it or before re-instantiate it.
+
+```
+connect.cleanUp();
+```
 
 # Run and Build
 

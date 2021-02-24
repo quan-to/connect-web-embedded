@@ -61,6 +61,10 @@ export class Connect {
     this.createPostMessage.subscribe(this.handleHookAction.bind(this));
   }
 
+  cleanUp() {
+    this.createPostMessage.cleanUp();
+  }
+
   renderIframe() {
     Render(`${this.getOrigin()}/?hsession=${this.session}`, this.domain);
   }
@@ -110,29 +114,35 @@ export class Connect {
       onAddAccountSuccess,
     } = this._callback;
 
-    if (hook === 'onload') return onLoad();
-
-    if (hook === 'onsuccess') {
-      const valueHTML = document.getElementsByTagName('iframe');
-      Array.from(valueHTML).forEach(va =>
-        va.id.includes('connect-embedded') ? va.remove() : null,
-      );
-      return onSuccess();
-    }
-    if (hook === 'ongrantedpermission')
-      return onGrantedPermission(this.payload);
-    if (hook === 'onauthsuccess') return onAuthSuccess(this.payload);
-    if (hook === 'onauthfail') return onAuthFail(this.payload);
-    if (hook === 'onselectbank') return onSelectBank(this.payload);
-    if (hook === 'onaddaccountsuccess')
-      return onAddAccountSuccess(this.payload);
-
-    if (hook === 'onexit') {
-      const valueHTML = document.getElementsByTagName('iframe');
-      Array.from(valueHTML).forEach(va =>
-        va.id.includes('connect-embedded') ? va.remove() : null,
-      );
-      return onExit();
+    switch (hook) {
+      case 'onload':
+        return onLoad();
+      case 'onsuccess': {
+        const valueHTML = document.getElementsByTagName('iframe');
+        Array.from(valueHTML).forEach(va =>
+          va.id.includes('connect-embedded') ? va.remove() : null,
+        );
+        return onSuccess();
+      }
+      case 'ongrantedpermission':
+        return onGrantedPermission(this.payload);
+      case 'onauthsuccess':
+        return onAuthSuccess(this.payload);
+      case 'onauthfail':
+        return onAuthFail(this.payload);
+      case 'onselectbank':
+        return onSelectBank(this.payload);
+      case 'onaddaccountsuccess':
+        return onAddAccountSuccess(this.payload);
+      case 'onexit': {
+        const valueHTML = document.getElementsByTagName('iframe');
+        Array.from(valueHTML).forEach(va =>
+          va.id.includes('connect-embedded') ? va.remove() : null,
+        );
+        return onExit();
+      }
+      default:
+        return;
     }
   };
 }

@@ -25,7 +25,12 @@ export function createPostMessageListener({ getOrigin, payloads, hooks }) {
 
   globalThis.addEventListener('message', eventData);
 
+  const cleanUp = () => {
+    globalThis.removeEventListener('message', eventData);
+  };
+
   return {
     subscribe,
+    cleanUp,
   };
 }
